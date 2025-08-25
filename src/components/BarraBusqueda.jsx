@@ -1,45 +1,36 @@
-import React, { useState } from "react";
-import axios from "axios";
-
-// 🔑 Coloca tu API Key de Geoapify aquí
-const API_KEY = "a1425fbf2d3f49128ff7df295f4122ec";
+import { useState } from "react";
 
 function BarraBusqueda({ setLugares }) {
-  const [busqueda, setBusqueda] = useState("");
+  const [query, setQuery] = useState("");
 
-  // 🔍 Función para manejar la búsqueda
-  const manejarBusqueda = async (e) => {
-    e.preventDefault();
-    if (!busqueda.trim()) return;
+  const buscarLugares = async () => {
+    if (!query) return;
+    const apiKey = "a1425fbf2d3f49128ff7df295f4122ec"; // 🔑 PON AQUÍ TU API KEY
+
+    const url = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(
+      query
+    )}&apiKey=${apiKey}`;
 
     try {
-      const respuesta = await axios.get(
-        `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(
-          busqueda
-        )}&apiKey=${API_KEY}`
-      );
-      setLugares(respuesta.data.features);
+      const response = await fetch(url);
+      const data = await response.json();
+      setLugares(data.features || []);
     } catch (error) {
-      console.error(error);
-      alert("⚠️ Ocurrió un error al buscar lugares. Inténtalo de nuevo.");
+      console.error("Error buscando lugares:", error);
     }
   };
 
   return (
-    <form onSubmit={manejarBusqueda} className="mb-4">
-      <div className="input-group">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Escribe una ciudad, restaurante, etc..."
-          value={busqueda}
-          onChange={(e) => setBusqueda(e.target.value)}
-        />
-        <button type="submit" className="btn btn-success">
-          Buscar
-        </button>
-      </div>
-    </form>
+    <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Buscar ciudad o dirección..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && buscarLugares()}
+      />
+      <button onClick={buscarLugares}>Buscar</button>
+    </div>
   );
 }
 

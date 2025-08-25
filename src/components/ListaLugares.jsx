@@ -1,29 +1,28 @@
-import React from "react";
-
-function ListaLugares({ lugares }) {
-  if (!lugares.length) {
-    return <p className="text-center">🔍 Escribe algo para ver resultados.</p>;
-  }
-
+function ListaLugares({ lugares, onSelectLugar }) {
   return (
-    <div className="row">
-      {lugares.map((lugar) => (
-        <div className="col-md-4 mb-4" key={lugar.properties.place_id}>
-          <div className="card shadow-sm h-100">
-            <div className="card-body">
-              <h5 className="card-title">
-                {lugar.properties.formatted || "📍 Lugar sin nombre"}
-              </h5>
-              <p className="card-text">
-                <strong>Latitud:</strong> {lugar.geometry.coordinates[1]} <br />
-                <strong>Longitud:</strong> {lugar.geometry.coordinates[0]}
+    <div className="places-list">
+      {lugares.length === 0 ? (
+        <p>No hay resultados. Busca una ciudad o dirección.</p>
+      ) : (
+        lugares.map((lugar) => {
+          const props = lugar.properties;
+          return (
+            <div
+              key={lugar.properties.place_id}
+              className="place-card"
+              onClick={() => onSelectLugar(lugar)}
+            >
+              <h3>{props.formatted}</h3>
+              <p>
+                {props.city || props.town || props.village || "Ciudad no especificada"}
               </p>
             </div>
-          </div>
-        </div>
-      ))}
+          );
+        })
+      )}
     </div>
   );
 }
 
 export default ListaLugares;
+
