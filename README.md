@@ -1,12 +1,29 @@
-# React + Vite
+# 🌍 Buscador de Destinos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web en **React + Vite** que permite buscar destinos usando la API de **Geoapify**, visualizar resultados en forma de cards y mostrar la ubicación seleccionada en un **mapa interactivo con Leaflet**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características
+- 🔎 Búsqueda de lugares mediante **Geoapify API**.  
+- 🗺️ Visualización de mapas interactivos con **Leaflet**.  
+- 📍 Selección de destinos y marcadores dinámicos.  
+- 📱 Diseño responsive (adaptado a móvil y escritorio).  
+- 🎨 Interfaz con estilos personalizados en CSS.  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologías utilizadas
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/) ⚡
+- [Leaflet](https://leafletjs.com/) 🗺️
+- [Geoapify Places API](https://www.geoapify.com/) 🌐
+- CSS personalizado 🎨
+
+---
+
+## 📦 Instalación
+
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/isabel-espinoza-bravo/Proyecto5.git
+   cd Proyecto5
