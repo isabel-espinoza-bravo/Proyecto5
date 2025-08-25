@@ -3,7 +3,7 @@ import BarraBusqueda from "./components/BarraBusqueda";
 import ListaLugares from "./components/ListaLugares";
 import Mapa from "./components/Mapa";
 import ErrorBoundary from "./components/ErrorBoundary"; // 👈 Importa el ErrorBoundary
-import "./style/App.css";
+import "./style/app.css";
 
 function App() {
   const [lugares, setLugares] = useState([]); // Lugares encontrados
